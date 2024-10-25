@@ -4,10 +4,10 @@ import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <header className={styles.navbar}>
+    <header className={`row ${styles.navbar}`}>
       <nav>
         <ul>
-          <li>
+          <li className="col-md">
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
               to="/about"
@@ -15,7 +15,7 @@ const NavBar = () => {
               About
             </NavLink>
           </li>
-          <li>
+          <li className="col-md">
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
               to="/"
@@ -23,7 +23,7 @@ const NavBar = () => {
               Main
             </NavLink>
           </li>
-          <li>
+          <li className="col-md">
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
               to="/mydrivers"
