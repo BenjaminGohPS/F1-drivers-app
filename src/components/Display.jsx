@@ -5,6 +5,7 @@ import NavBar from "./NavBar";
 import About from "../pages/About";
 import MyDrivers from "../pages/MyDrivers";
 import NotFound from "../pages/NotFound";
+import Main from "../pages/Main";
 
 const Display = () => {
   const queryClient = useQueryClient();
@@ -31,14 +32,7 @@ const Display = () => {
         <div className="col-md-1"></div>
         <div className="col-md-10">
           <Routes>
-            <Route
-              path="/"
-              element={
-                <h2>
-                  Home page for info of the greatest drivers on the planet!
-                </h2>
-              }
-            />
+            <Route path="/" element={<Main />} />
             <Route path="/about" element={<About />} />
             <Route path="/mydrivers" element={<MyDrivers />} />
             <Route path="*" element={<NotFound />} />
