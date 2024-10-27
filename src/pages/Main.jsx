@@ -17,9 +17,9 @@ const Main = () => {
     // a is an array of KVP. so need to do .map?
 
     // b onwards need to .map, then extract and repeat.
-    const b = Object.keys(a).map((key) => a[key]);
-    const c = Object.keys(b).map((key) => b[key]);
-    const d = Object.keys(c).map((key) => c[key]);
+    // const b = Object.keys(a).map((key) => a[key]);
+    // const c = Object.keys(b).map((key) => b[key]);
+    // const d = Object.keys(c).map((key) => c[key]);
 
     // console.log(dataReceived);
     // console.log(dataReceived[0]);
@@ -27,8 +27,8 @@ const Main = () => {
 
     // console.log(a[0]);
 
-    // console.log(a[0].DriverTable.Drivers[16].driverId);
     // this is the data I need!
+    // console.log(a[0].DriverTable.Drivers[16].driverId); // alonso
 
     // console.log(c.Drivers[12].driverId);
     // console.log(c.DriverTable[0].Drivers[15].driverId);
@@ -38,8 +38,25 @@ const Main = () => {
     // console.log(d);
 
     // console.log(a[0]);
+    console.log(a[0].DriverTable.Drivers);
+    const b = a[0].DriverTable.Drivers;
 
-    return d;
+    return b;
+
+    // console.log(a[0].DriverTable.Drivers.length); // 30
+    //   const for_loop = [];
+    //   for (i = 0; i < a[0].DriverTable.Drivers.length; i++) {
+    //     for_loop.push(<li>{a[0].DriverTable.Drivers[i].driverId}</li>);
+    //   }
+    //   getData();
+    //   return (
+    //     <div>
+    //       <center>
+    //         <h1>Hello Ninja!</h1>
+    //       </center>
+    //       {for_loop}
+    //     </div>
+    //   );
   };
 
   const query = useQuery({
@@ -56,10 +73,10 @@ const Main = () => {
 
       <div className="row">
         <div className="col-md-1"></div>
-        {/* 
+
         <div className="col-md-10">
           {query.isSuccess &&
-            query.d.map((item) => {
+            query.data.map((item) => {
               return (
                 <Drivers
                   key={item.driverId}
@@ -68,7 +85,7 @@ const Main = () => {
                 />
               );
             })}
-        </div> */}
+        </div>
 
         <div className="col-md-1"></div>
       </div>
