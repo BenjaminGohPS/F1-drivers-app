@@ -30,15 +30,8 @@ const Main = () => {
     // this is the data I need!
     // console.log(a[0].DriverTable.Drivers[16].driverId); // alonso
 
-    // console.log(c.Drivers[12].driverId);
-    // console.log(c.DriverTable[0].Drivers[15].driverId);
-
-    // console.log(d[0].driverId);
-
-    // console.log(d);
-
     // console.log(a[0]);
-    console.log(a[0].DriverTable.Drivers);
+    // console.log(a[0].DriverTable.Drivers);
     const b = a[0].DriverTable.Drivers;
 
     return b;
@@ -72,9 +65,12 @@ const Main = () => {
       <br />
 
       <div className="row">
-        <div className="col-md-1"></div>
+        
+            <div className="col-md">Family Name</div>
+            <div className="col-md">Date of Birth</div>
+            <div className="col-md">Nationality</div>
+         
 
-        <div className="col-md-10">
           {query.isSuccess &&
             query.data.map((item) => {
               return (
@@ -82,12 +78,12 @@ const Main = () => {
                   key={item.driverId}
                   id={item.driverId}
                   familyName={item.familyName}
+                  dob={item.dateOfBirth}
+                  nationality={item.nationality}
                 />
               );
             })}
-        </div>
-
-        <div className="col-md-1"></div>
+       
       </div>
     </div>
   );

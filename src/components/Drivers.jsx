@@ -9,6 +9,9 @@ const Drivers = (props) => {
     <>
       <div className={`row ${styles.drivers}`} key={props.key}>
         <div className="col-sm">{props.familyName}</div>
+        <div className='col-sm'>{props.dob}</div>
+        <div className='col-sm'>{props.nationality}</div>
+        <button className='col-sm'>Add</button>
       </div>
     </>
   );
