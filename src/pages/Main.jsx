@@ -63,6 +63,7 @@ const Main = () => {
                 familyName={item.familyName}
                 dob={item.dateOfBirth}
                 nationality={item.nationality}
+                url={item.url}
               />
             );
           })}
