@@ -1,9 +1,9 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import styles from "../components/Drivers.module.css";
 import { Link } from "react-router-dom";
 
-const MyDrivers = (props) => {
+const MyDrivers = () => {
   const queryClient = useQueryClient();
 
   const getMyDrivers = async () => {
@@ -23,13 +23,33 @@ const MyDrivers = (props) => {
     return b;
   };
 
-  const removeDrivers = () => {
+  const removeDrivers = async () => {
     // code to remove drivers
+
+    console.log("removeDriver button works");
+    console.log(item.id); // not getting data
+
+    const res = await fetch(
+      "https://api.airtable.com/v0/appucqt9L91D56Qr5/Table%201/" + id,
+      {
+        method: "DELETE",
+        headers: { authorization: "Bearer " + import.meta.env.VITE_TOKEN },
+        body: JSON.stringify({ id: item.id }),
+      }
+    );
+    if (!res.ok) {
+      throw new Error("cannot remove driver");
+    }
   };
 
   const queryMyDrivers = useQuery({
     queryKey: ["myDrivers"],
     queryFn: getMyDrivers,
+  });
+
+  const mutation = useMutation({
+    mutationFn: removeDrivers,
+    onSuccess: queryClient.invalidateQueries(["myDrivers"]),
   });
 
   return (
@@ -48,7 +68,7 @@ const MyDrivers = (props) => {
       {queryMyDrivers.isSuccess &&
         queryMyDrivers.data.map((item) => {
           return (
-            <div className={`row ${styles.drivers}`} key={item.fields.driverId}>
+            <div className={`row ${styles.drivers}`} key={item.id}>
               <div className="col-sm">{item.fields.givenName}</div>
               <div className="col-sm">{item.fields.familyName}</div>
               <div className="col-sm">{item.fields.dateOfBirth}</div>
@@ -57,7 +77,12 @@ const MyDrivers = (props) => {
                 <Link to={item.fields.url}>Profile</Link>
               </div>
 
-              <button type="button" className="col-sm btn btn-primary">
+              <button
+                type="button"
+                className="col-sm btn btn-primary"
+                onClick={mutation.mutate}
+                id={item.id}
+              >
                 Remove
               </button>
             </div>
