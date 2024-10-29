@@ -29,6 +29,7 @@ const Main = () => {
     <div className="container">
       <div className="row">
         <h2>Info on the fastest drivers on the planet!</h2>
+        <img src="https://media.formula1.com/image/upload/f_auto,c_limit,w_960,q_auto/f_auto/q_auto/content/dam/fom-website/manual/Misc/Driver%20Of%20The%20Day/2024/dotd2024new" alt='f1 drivers' />
       </div>
       <br />
 

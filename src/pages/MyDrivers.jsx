@@ -70,17 +70,22 @@ const MyDrivers = () => {
           queryMyDrivers.data.map((item) => {
             return (
               <div className={`row ${styles.drivers}`} key={item.id}>
+                <div className="col-sm">
+                  <img
+                    src={
+                      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Alonso-68_%2824710447098%29.jpg/330px-Alonso-68_%2824710447098%29.jpg"
+                    }
+                    alt="Fernando Alonso"
+                    style={{ width: "75px", height: "auto" }}
+                  />
+                </div>
                 <div className="col-sm">{item.fields.givenName}</div>
                 <div className="col-sm">{item.fields.familyName}</div>
                 <div className="col-sm">{item.fields.dateOfBirth}</div>
                 <div className="col-sm">{item.fields.nationality}</div>
                 <div className="col-sm">
                   {item.fields.url ? (
-                    <a
-                      href={item.fields.url}
-                      target="_blank"
-                      // rel="noopener noreferrer"
-                    >
+                    <a href={item.fields.url} target="_blank" rel="noreferrer">
                       Profile
                     </a>
                   ) : (
@@ -96,7 +101,7 @@ const MyDrivers = () => {
                     mutation.mutate(item.id);
                   }}
                 >
-                  Remove
+                  Remove {item.fields.url}
                 </button>
               </div>
             );
