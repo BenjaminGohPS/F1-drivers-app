@@ -9,6 +9,7 @@ const Drivers = (props) => {
 
   const addDrivers = async () => {
     console.log(props.givenName);
+
     const res = await fetch(
       "https://api.airtable.com/v0/appucqt9L91D56Qr5/Table%201",
       {

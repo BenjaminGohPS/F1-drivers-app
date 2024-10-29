@@ -28,11 +28,10 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 
-  /* added these*/
+  
   color: white;
   background-color: #101720;
 }
@@ -49,12 +48,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #0267c1; /* button color*/
+  background-color: #0267c1; 
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  /* border-color: #646cff; */
+  
   border-color: #F4b860
 }
 button:focus,

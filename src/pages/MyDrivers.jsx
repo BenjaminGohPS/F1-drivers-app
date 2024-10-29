@@ -1,10 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import styles from "../components/Drivers.module.css";
 import { Link } from "react-router-dom";
 
 const MyDrivers = () => {
   const queryClient = useQueryClient();
+  const [deleteId, setDeleteId] = useState();
 
   const getMyDrivers = async () => {
     const res = await fetch(
@@ -23,18 +24,14 @@ const MyDrivers = () => {
     return b;
   };
 
-  const removeDrivers = async () => {
+  const removeDrivers = async (deleteId) => {
     // code to remove drivers
 
-    console.log("removeDriver button works");
-    console.log(item.id); // not getting data
-
     const res = await fetch(
-      "https://api.airtable.com/v0/appucqt9L91D56Qr5/Table%201/" + id,
+      "https://api.airtable.com/v0/appucqt9L91D56Qr5/Table%201/" + deleteId,
       {
         method: "DELETE",
         headers: { authorization: "Bearer " + import.meta.env.VITE_TOKEN },
-        body: JSON.stringify({ id: item.id }),
       }
     );
     if (!res.ok) {
@@ -49,7 +46,9 @@ const MyDrivers = () => {
 
   const mutation = useMutation({
     mutationFn: removeDrivers,
-    onSuccess: queryClient.invalidateQueries(["myDrivers"]),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["myDrivers"]);
+    },
   });
 
   return (
@@ -57,37 +56,52 @@ const MyDrivers = () => {
       <div className="row">
         <h2>My Drivers</h2>
       </div>
+      <br />
+
       <div className="row">
-        <div className="col-md-1"></div>
-        <div className="col-md-10">
-          <p>CONTENT HERE</p>
-        </div>
-        <div className="col-md-1"></div>
-      </div>
+        <div className="col-md">Given Name</div>
+        <div className="col-md">Family Name</div>
+        <div className="col-md">Date of Birth</div>
+        <div className="col-md">Nationality</div>
+        <div className="col-md"></div>
+        <div className="col-md"></div>
 
-      {queryMyDrivers.isSuccess &&
-        queryMyDrivers.data.map((item) => {
-          return (
-            <div className={`row ${styles.drivers}`} key={item.id}>
-              <div className="col-sm">{item.fields.givenName}</div>
-              <div className="col-sm">{item.fields.familyName}</div>
-              <div className="col-sm">{item.fields.dateOfBirth}</div>
-              <div className="col-sm">{item.fields.nationality}</div>
-              <div className="col-sm">
-                <Link to={item.fields.url}>Profile</Link>
+        {queryMyDrivers.isSuccess &&
+          queryMyDrivers.data.map((item) => {
+            return (
+              <div className={`row ${styles.drivers}`} key={item.id}>
+                <div className="col-sm">{item.fields.givenName}</div>
+                <div className="col-sm">{item.fields.familyName}</div>
+                <div className="col-sm">{item.fields.dateOfBirth}</div>
+                <div className="col-sm">{item.fields.nationality}</div>
+                <div className="col-sm">
+                  {item.fields.url ? (
+                    <a
+                      href={item.fields.url}
+                      target="_blank"
+                      // rel="noopener noreferrer"
+                    >
+                      Profile
+                    </a>
+                  ) : (
+                    <span>No Profile Link</span>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  className="col-sm btn btn-primary"
+                  onClick={() => {
+                    setDeleteId(item.id);
+                    mutation.mutate(item.id);
+                  }}
+                >
+                  Remove
+                </button>
               </div>
-
-              <button
-                type="button"
-                className="col-sm btn btn-primary"
-                onClick={mutation.mutate}
-                id={item.id}
-              >
-                Remove
-              </button>
-            </div>
-          );
-        })}
+            );
+          })}
+      </div>
     </div>
   );
 };
@@ -95,15 +109,9 @@ const MyDrivers = () => {
 export default MyDrivers;
 
 /**
-<div className={`row ${styles.drivers}`} key={props.key}>
-        <div className="col-sm">{props.givenName}</div>
-        <div className="col-sm">{props.familyName}</div>
-        <div className="col-sm">{props.dob}</div>
-        <div className="col-sm">{props.nationality}</div>
-        <button type="button" className="col-sm btn btn-primary">
-          Remove
-        </button>
-      </div>
+<div className="col-sm">
+                <Link to={item.fields.url}>Profile</Link>
+              </div>
 
       console.log(a[0][0]);
     console.log(a[0][1].fields.driverId);

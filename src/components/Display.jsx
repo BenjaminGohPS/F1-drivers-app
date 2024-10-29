@@ -23,7 +23,7 @@ const Display = () => {
       <div className="row">
         <div className="col-md-1"></div>
         <div className="col-md-10">
-          <NavBar />
+          {/* <NavBar /> */}
         </div>
         <div className="col-md-1"></div>
       </div>

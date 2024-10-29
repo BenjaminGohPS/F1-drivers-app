@@ -4,7 +4,6 @@ import Drivers from "../components/Drivers";
 
 const Main = () => {
   const queryClient = useQueryClient();
-  // const [drivers, setDrivers] = useState([]);
 
   const getData = async () => {
     const res = await fetch("http://ergast.com/api/f1/drivers.json");
@@ -26,20 +25,6 @@ const Main = () => {
     queryFn: getData,
   });
 
-  // const addData = (event) => {
-  //   setDrivers((prevState) => [
-  //     ...prevState,
-  //     {
-  //       id: item.driverId,
-  //       givenName: item.givenName,
-  //       familyName: item.familyName,
-  //       dob: item.dateOfBirth,
-  //       nationality: item.nationality,
-  //     },
-  //   ]);
-  // };
-
-
   return (
     <div className="container">
       <div className="row">
@@ -52,7 +37,7 @@ const Main = () => {
         <div className="col-md">Family Name</div>
         <div className="col-md">Date of Birth</div>
         <div className="col-md">Nationality</div>
-        <div className="col-md">Add to My Drivers</div>
+        <div className="col-md"></div>
 
         {query.isSuccess &&
           query.data.map((item) => {
