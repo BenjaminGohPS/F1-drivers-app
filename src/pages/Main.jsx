@@ -39,6 +39,7 @@ const Main = () => {
         <div className="col-md">Date of Birth</div>
         <div className="col-md">Nationality</div>
         <div className="col-md"></div>
+        <div className="col-md"></div>
 
         {query.isSuccess &&
           query.data.map((item) => {

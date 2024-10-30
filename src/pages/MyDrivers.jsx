@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const MyDrivers = () => {
   const queryClient = useQueryClient();
-  const [deleteId, setDeleteId] = useState();
 
   const getMyDrivers = async () => {
     const res = await fetch(
@@ -97,7 +96,6 @@ const MyDrivers = () => {
                   type="button"
                   className="col-sm btn btn-primary"
                   onClick={() => {
-                    setDeleteId(item.id);
                     mutation.mutate(item.id);
                   }}
                 >
