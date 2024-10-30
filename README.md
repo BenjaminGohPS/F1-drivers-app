@@ -1,6 +1,6 @@
 # F1 Drivers App
 
-Who doesn't like trivia? My group of university mates often talk about Formula 1 (F1)! It is something that we follow up regularly, and we would make an effort to make time to attend the Singapore Grand Prix together! During our meetups, when ever we would talk about F1, we will discuss about the drivers too. So I figured, why not have an app where we could look up driver's information on the go, and do some fact checks as well. I believe this would be a fun app to use, and I have created a section, where you can save some of your favourite drivers for quick access to their profile and details.
+Who doesn't like trivia? My group of university mates often talk about Formula 1 (F1) when we hang out! It is something that we follow up regularly, and we would make an effort to make time to attend the Singapore Grand Prix together every year! During our meetups, whenever we approach the topic of F1, we will discuss about the drivers. So I figured, why not have an app where we could look up driver's information on the go, and do some fact checks as well. I believe this would be a fun app to use, and I have created a section, where you can save some of your favourite drivers for quick access to their profile and details.
 
 ```
 “We win and lose together.” – Lewis Hamilton.
@@ -16,9 +16,13 @@ Next, you would need to create an airtable with the following parameters:-
 - columns to be set up as single line text fields.
 - column labels from left to right; driverId, givenName, familyName, dateOfBirth, nationality, url
 
-Finally, ensure you are at the main folder of this file, using gitbash,key 'npm run dev' to try out the application on your web browser. I would recommend to use the chrome browser, as the application was created and tested on chrome.
+Finally, ensure you are at the main folder of this file, using gitbash, key 'npm i' to install the necessary dependecies, and key in 'npm run dev' to try out the application on your web browser. I would recommend to use the chrome browser, as the application was created and tested on chrome.
+
+If you are intending to edit the codes, do note that I have used TanStack queries. Do visit their site to learn more. To get started with TanStack, you would need to install their dependencies package using 'npm i @tanstack/react-query'
 
 # Attributions
+
+For the data, credit goes to Ergast API. Information was obtained from here [Ergast API](https://documenter.getpostman.com/view/11586746/SztEa7bL#intro)
 
 For designs, I have used bootstrap for the buttons, and the overall html styling:-
 
