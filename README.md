@@ -28,12 +28,15 @@ For designs, I have used bootstrap for the buttons, and the overall html styling
 
 - [Bootstrap](https://getbootstrap.com/)
 
-Images are obtained from these sites:- -[Formula 1](https://www.formula1.com/en/latest/article/driver-of-the-day-2024.1I7A0iPl3nMaXyPIeFVFLZ)
+Images are obtained from these sites:-
+-[Formula 1](https://www.formula1.com/en/latest/article/driver-of-the-day-2024.1I7A0iPl3nMaXyPIeFVFLZ)
+-[Racingnews365](https://racingnews365.com/schedule-for-the-f1-2022-singapore-grand-prix)
 
 Whenever I got stuck, or faced difficulties in implementing the codes or ideas, I would refer to the following for examples and write ups:-
 
 - [W3Schools](https://www.w3schools.com/)
 - [MDN](https://developer.mozilla.org/en-US/)
+- [stackoverflow](https://stackoverflow.com/)
 - [General Assembly Course Notes](https://generalassemb.ly/)
 - [React](https://react.dev/learn)
 

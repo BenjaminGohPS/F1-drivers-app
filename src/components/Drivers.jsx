@@ -8,6 +8,8 @@ const Drivers = (props) => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
   const fetchDriverExists = async (driverId) => {
+    // code to check if drivers are already added to airtable-My Drivers
+
     const res = await fetch(
       `https://api.airtable.com/v0/appucqt9L91D56Qr5/Table%201?filterByFormula={driverId}='${driverId}'`,
       {
@@ -24,7 +26,7 @@ const Drivers = (props) => {
     }
 
     const data = await res.json();
-    return data.records.length > 0; //
+    return data.records.length > 0;
   };
 
   const { data: isDriverAdded } = useQuery({
@@ -38,8 +40,6 @@ const Drivers = (props) => {
   });
 
   const addDrivers = async () => {
-    console.log(props.givenName);
-
     const res = await fetch(
       "https://api.airtable.com/v0/appucqt9L91D56Qr5/Table%201",
       {
@@ -110,5 +110,3 @@ const Drivers = (props) => {
 };
 
 export default Drivers;
-
-
