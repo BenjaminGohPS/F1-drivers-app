@@ -68,10 +68,11 @@ const MyDrivers = () => {
 
         {queryMyDrivers.isSuccess &&
           queryMyDrivers.data.map((item) => {
-            const formattedName = `${item.fields.givenName}_${item.fields.familyName}`.replace(
-              / /g,
-              "_"
-            );
+            const formattedName =
+              `${item.fields.givenName}_${item.fields.familyName}`.replace(
+                / /g,
+                "_"
+              );
             const googleUrl = `https://www.google.com/search?q=${formattedName}&udm=2`;
 
             return (
@@ -86,7 +87,9 @@ const MyDrivers = () => {
                       />
                     </a>
                   ) : (
-                    <span>No Image Available</span>
+                    <a href={googleUrl} target="_blank" rel="noreferrer">
+                      <span>No Image Available</span>
+                    </a>
                   )}
                 </div>
                 <div className="col-sm">{item.fields.givenName}</div>

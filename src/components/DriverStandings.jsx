@@ -5,7 +5,7 @@ const DriverStandings = (props) => {
   return (
     <>
       <br />
-      <div className={`row ${styles.drivers}`} key={props.id}>
+      <div className={`row ${styles.drivers}`} key={props.idx}>
         <div className="col-sm">{props.position}</div>
         <div className="col-sm">{props.points}</div>
         <div className="col-sm">{props.wins}</div>

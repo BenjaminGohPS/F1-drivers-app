@@ -26,7 +26,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
-  color: white;
+  color: whitesmoke;
   background-color: #101720;
 }
 
@@ -46,9 +46,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #f4b860;
-}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

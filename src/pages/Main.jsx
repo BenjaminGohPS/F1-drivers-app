@@ -189,9 +189,9 @@ const Main = () => {
       <div className="row">
         {selection !== "all" &&
           queryStanding.isSuccess &&
-          queryStanding.data.map((item) => (
+          queryStanding.data.map((item, idx) => (
             <DriverStandings
-              key={item.Driver.driverid}
+              key={idx}
               id={item.Driver.driverId}
               givenName={item.Driver.givenName}
               familyName={item.Driver.familyName}

@@ -1,7 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
-import NavBar from "./NavBar";
+import { Route, Routes } from "react-router-dom";
 import About from "../pages/About";
 import MyDrivers from "../pages/MyDrivers";
 import NotFound from "../pages/NotFound";
