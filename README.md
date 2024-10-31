@@ -34,7 +34,7 @@ Upon running the app, you will be greeted at the main page with a list of all th
 
 ```
 Look for the folder name src -> pages -> Main.jsx
-Amend the url of line 10, by adding '?limit=x',
+Amend the url of line 11, by adding '?limit=x',
 where x is the number of drivers you wish to be displayed on the main page. You may refer to the below example for reference.
 ```
 
