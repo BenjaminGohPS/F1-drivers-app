@@ -68,15 +68,17 @@ const MyDrivers = () => {
 
         {queryMyDrivers.isSuccess &&
           queryMyDrivers.data.map((item) => {
+            const formattedName = `${item.fields.givenName}_${item.fields.familyName}`.replace(
+              / /g,
+              "_"
+            );
+            const googleUrl = `https://www.google.com/search?q=${formattedName}&udm=2`;
+
             return (
               <div className={`row ${styles.drivers}`} key={item.id}>
                 <div className="col-sm">
                   {item.fields.imageUrl ? (
-                    <a
-                      href={item.fields.imageUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a href={googleUrl} target="_blank" rel="noreferrer">
                       <img
                         src={item.fields.imageUrl}
                         alt={`${item.fields.givenName} ${item.fields.familyName}`}
@@ -119,4 +121,3 @@ const MyDrivers = () => {
 };
 
 export default MyDrivers;
-
