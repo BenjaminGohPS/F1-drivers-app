@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
 import Drivers from "../components/Drivers";
+import DriverStandings from "../components/DriverStandings";
 
 const Main = () => {
   const queryClient = useQueryClient();
@@ -37,14 +38,37 @@ const Main = () => {
     const data = await res.json();
     const a = Object.keys(data).map((key) => data[key]);
 
-    const b = a[0].DriverTable.Drivers;
+    const dataYear = a[0].DriverTable.Drivers;
 
-    return b;
+    return dataYear;
   };
 
   const queryYear = useQuery({
     queryKey: ["driversYear", selection],
     queryFn: () => getDataYear(selection),
+    enabled: selection !== "all",
+  });
+
+  const getStanding = async (year) => {
+    const res = await fetch(
+      `http://ergast.com/api/f1/${year}/driverStandings.json`
+    );
+
+    if (!res.ok) {
+      throw new Error("Error fetching standing");
+    }
+
+    const data = await res.json();
+    const a = Object.keys(data).map((key) => data[key]);
+
+    const dataStanding = a[0].StandingsTable.StandingsLists[0].DriverStandings;
+
+    return dataStanding;
+  };
+
+  const queryStanding = useQuery({
+    queryKey: ["driverStanding", selection],
+    queryFn: () => getStanding(selection),
     enabled: selection !== "all",
   });
 
@@ -109,7 +133,6 @@ const Main = () => {
         <div className="col-md">Nationality</div>
         <div className="col-md"></div>
         <div className="col-md"></div>
-
         {selection === "all" &&
           query.isSuccess &&
           query.data.map((item) => (
@@ -123,7 +146,6 @@ const Main = () => {
               url={item.url}
             />
           ))}
-
         {selection !== "all" &&
           queryYear.isSuccess &&
           queryYear.data.map((item) => (
@@ -138,9 +160,52 @@ const Main = () => {
             />
           ))}
       </div>
+
+      <br />
+      <br />
+
+      {selection !== "all" ? (
+        <div className="row">
+          <hr className="bg-danger border-5 border-top border-danger" />
+          <br />
+          <div className="row">
+            <h2>End of Season Standings</h2>
+          </div>
+          <div className="row">
+            <div className="col-sm">Position</div>
+            <div className="col-sm">Points</div>
+            <div className="col-sm">Wins</div>
+            <div className="col-sm">Given Name</div>
+            <div className="col-sm">Family Name</div>
+            <div className="col-sm">Date of Birth</div>
+            <div className="col-sm">Nationality</div>
+            <div className="col-sm"></div>
+          </div>
+        </div>
+      ) : (
+        <div />
+      )}
+
+      <div className="row">
+        {selection !== "all" &&
+          queryStanding.isSuccess &&
+          queryStanding.data.map((item) => (
+            <DriverStandings
+              key={item.Driver.driverid}
+              id={item.Driver.driverId}
+              givenName={item.Driver.givenName}
+              familyName={item.Driver.familyName}
+              dob={item.Driver.dateOfBirth}
+              nationality={item.Driver.nationality}
+              url={item.Driver.url}
+              points={item.points}
+              position={item.position}
+              wins={item.wins}
+            />
+          ))}
+      </div>
     </div>
   );
 };
 
 export default Main;
-
