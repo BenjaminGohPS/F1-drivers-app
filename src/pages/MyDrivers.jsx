@@ -50,22 +50,6 @@ const MyDrivers = () => {
     },
   });
 
-   // Image URL generation function
-   const getDriverImageUrl = (givenName, familyName) => {
-    const driverName = `${givenName}_${familyName}`.replace(/ /g, "_");
-    return `https://en.wikipedia.org/wiki/File:${driverName}.jpg`; // Example URL
-  };
-
-  // Handle loading and error states
-  if (queryMyDrivers.isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (queryMyDrivers.isError) {
-    return <div>Error: {queryMyDrivers.error.message}</div>;
-  }
-
-
   return (
     <div className="container">
       <div className="row">
@@ -74,6 +58,7 @@ const MyDrivers = () => {
       <br />
 
       <div className="row">
+        <div className="col-md"></div>
         <div className="col-md">Given Name</div>
         <div className="col-md">Family Name</div>
         <div className="col-md">Date of Birth</div>
@@ -86,11 +71,21 @@ const MyDrivers = () => {
             return (
               <div className={`row ${styles.drivers}`} key={item.id}>
                 <div className="col-sm">
-                <img
-                src={getDriverImageUrl(item.fields.givenName, item.fields.familyName)}
-                alt={`${item.fields.givenName} ${item.fields.familyName}`}
-                style={{ width: "75px", height: "auto" }}
-              />
+                  {item.fields.imageUrl ? (
+                    <a
+                      href={item.fields.imageUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img
+                        src={item.fields.imageUrl}
+                        alt={`${item.fields.givenName} ${item.fields.familyName}`}
+                        style={{ width: "75px", height: "auto" }}
+                      />
+                    </a>
+                  ) : (
+                    <span>No Image Available</span>
+                  )}
                 </div>
                 <div className="col-sm">{item.fields.givenName}</div>
                 <div className="col-sm">{item.fields.familyName}</div>
@@ -113,7 +108,7 @@ const MyDrivers = () => {
                     mutation.mutate(item.id);
                   }}
                 >
-                  Remove {item.fields.url}
+                  Remove
                 </button>
               </div>
             );
@@ -125,21 +120,3 @@ const MyDrivers = () => {
 
 export default MyDrivers;
 
-/*
-
-<img
-                    src={
-                      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Alonso-68_%2824710447098%29.jpg/330px-Alonso-68_%2824710447098%29.jpg"
-                    }
-                    alt="Fernando Alonso"
-                    style={{ width: "75px", height: "auto" }}
-                  />
-
-                  ====
-<div className="col-sm">
-                <Link to={item.fields.url}>Profile</Link>
-              </div>
-
-      console.log(a[0][0]);
-    console.log(a[0][1].fields.driverId);
-*/

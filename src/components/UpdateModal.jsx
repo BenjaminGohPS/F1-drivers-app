@@ -8,30 +8,6 @@ const OverLay = (props) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  //   const nameRef = useRef("");
-
-  //   const updateUser = async () => {
-  //     const res = await fetch(import.meta.env.VITE_SERVER + "/lab/users", {
-  //       method: "PATCH",
-  //       headers: { "Content-type": "application/json" },
-  //       body: JSON.stringify({
-  //         user_id: props.id,
-  //         name: nameRef.current.value,
-  //       }),
-  //     });
-  //     if (!res.ok) {
-  //       throw new Error("cannot update user");
-  //     }
-  //   };
-
-  //   const mutation = useMutation({
-  //     mutationFn: updateUser,
-  //     onSuccess: () => {
-  //       queryClient.invalidateQueries(["users"]);
-  //       props.setShowUpdateModal(false);
-  //     },
-  //   });
-
   return (
     <div className={`container ${styles.backdrop}`}>
       <div className={styles.modal}>
@@ -84,7 +60,3 @@ const UpdateModal = (props) => {
   );
 };
 export default UpdateModal;
-
-/**
-onClick={navigate("/mydrivers")}
-*/

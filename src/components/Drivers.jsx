@@ -7,6 +7,20 @@ const Drivers = (props) => {
   const queryClient = useQueryClient();
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
+  const fetchDriverImage = async (givenName, familyName) => {
+    const formattedName = `${givenName}_${familyName}`.replace(/ /g, "_");
+    const apiUrl = `https://en.wikipedia.org/w/api.php?action=query&titles=${formattedName}&prop=pageimages&format=json&origin=*`;
+
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    const pageId = Object.keys(data.query.pages)[0];
+
+    
+    return data.query.pages[pageId].thumbnail
+      ? data.query.pages[pageId].thumbnail.source
+      : null;
+  };
+
   const fetchDriverExists = async (driverId) => {
     // code to check if drivers are already added to airtable-My Drivers
 
@@ -40,6 +54,8 @@ const Drivers = (props) => {
   });
 
   const addDrivers = async () => {
+    const imageUrl = await fetchDriverImage(props.givenName, props.familyName);
+
     const res = await fetch(
       "https://api.airtable.com/v0/appucqt9L91D56Qr5/Table%201",
       {
@@ -56,6 +72,7 @@ const Drivers = (props) => {
             familyName: props.familyName,
             dateOfBirth: props.dob,
             nationality: props.nationality,
+            imageUrl: imageUrl,
           },
         }),
       }
@@ -76,6 +93,10 @@ const Drivers = (props) => {
 
   return (
     <>
+      {showUpdateModal && (
+        <UpdateModal id={props.id} setShowUpdateModal={setShowUpdateModal} />
+      )}
+
       <div className={`row ${styles.drivers}`} key={props.id}>
         <div className="col-sm">{props.givenName}</div>
         <div className="col-sm">{props.familyName}</div>
@@ -91,9 +112,6 @@ const Drivers = (props) => {
           )}
         </div>
 
-        {showUpdateModal && (
-          <UpdateModal id={props.id} setShowUpdateModal={setShowUpdateModal} />
-        )}
         {!isDriverAdded && (
           <button
             type="button"

@@ -65,7 +65,9 @@ const Main = () => {
 
       <div className="row">
         <div className="col-md-3"></div>
-        <div className="col-md-2"><span>F1 Season</span></div>
+        <div className="col-md-2">
+          <span>F1 Season</span>
+        </div>
         <select
           id="selection"
           className="col-md-2"
@@ -77,6 +79,24 @@ const Main = () => {
           </option>
           <option key="2024" id="2024" value="2024">
             2024
+          </option>
+          <option key="2023" id="2023" value="2023">
+            2023
+          </option>
+          <option key="2022" id="2022" value="2022">
+            2022
+          </option>
+          <option key="2021" id="2021" value="2021">
+            2021
+          </option>
+          <option key="2020" id="2020" value="2020">
+            2020
+          </option>
+          <option key="2019" id="2019" value="2019">
+            2019
+          </option>
+          <option key="2018" id="2018" value="2018">
+            2018
           </option>
         </select>
       </div>
@@ -104,7 +124,7 @@ const Main = () => {
             />
           ))}
 
-        {selection === "2024" &&
+        {selection !== "all" &&
           queryYear.isSuccess &&
           queryYear.data.map((item) => (
             <Drivers
@@ -124,27 +144,3 @@ const Main = () => {
 
 export default Main;
 
-/* WORKINGS
-
- // a is an array of KVP. so need to do .map?
-
-    // b onwards need to .map, then extract and repeat.
-    // const b = Object.keys(a).map((key) => a[key]);
-    // const c = Object.keys(b).map((key) => b[key]);
-    // const d = Object.keys(c).map((key) => c[key]);
-
-    // console.log(dataReceived);
-    // console.log(dataReceived[0]);
-    // console.log(b);
-
-    // console.log(a[0]);
-
-    // this is the data I need!
-    // console.log(a[0].DriverTable.Drivers[16].driverId); // alonso
-
-    // console.log(a[0]);
-    // console.log(a[0].DriverTable.Drivers);
-
-   // console.log(a[0].DriverTable.Drivers.length); // 30
-  
-*/
