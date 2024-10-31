@@ -47,15 +47,18 @@ const getData = async () => {
     );
 ```
 
-You may use the drop down menu to select your preferred F1 season. This narrows your search for a particular driver, or perhaps you are just curious to know who raced in that year.
+You may use the drop down menu to select your preferred F1 season. This narrows your search for a particular driver, or perhaps you are just curious to know who won the championship that year!
 
-You may click on the 'Profile' button to be directed to their wikipedia page where more information about the driver may be found. You may click the 'Add' button, to add the driver to your 'My Drivers' list for easy reference. A pop up will appear, asking if you would like to add more drivers. If you click 'Yes', then you will stay at the current page to select more drivers. If 'No' is selected, then you will be directed 'My Drivers', which is the list of drivers you have added.
+After chosing a year, you may scroll down to see the 'End of Season Standings' of the driver. It will show details such as the ranking, the points scored, and the number of race win of the drivers that season.
 
-From here, you may click on the 'Profile' to learn more about the driver. Upon clicking the 'Remove' button, the driver will be deleted from your 'My Driver' list.
+You may click on the 'Profile' button to be directed to their wikipedia page where more information about the driver may be found. You may click the 'Add' button, to add the driver to your 'My Drivers' list for easy reference. A pop up will appear, asking if you would like to add more drivers. If you click 'Yes', then you will stay at the current page to select more drivers. If 'No' is selected, then you will be directed to 'My Drivers', which is the list of drivers you have added.
+
+From here, you may click on the 'Profile' to learn more about the driver too. Upon clicking the 'Remove' button, the driver will be deleted from your 'My Driver' list. You will also notice that now, the drivers in your 'My Drivers' list has a photo! Clicking on it will open up a new google image search tab for more eye candies. If the app was not able to show the picture of the driver, a link will appear for you to click, and a new tab will appear with google image search of the driver.
 
 # Attributions
 
-For the data, credit goes to Ergast API. Information was obtained from here [Ergast API](https://documenter.getpostman.com/view/11586746/SztEa7bL#intro)
+For the data, credit goes to Ergast API. Information was obtained from here:-
+- [Ergast API](https://documenter.getpostman.com/view/11586746/SztEa7bL#intro)
 
 For designs, I have used bootstrap for the buttons, and the overall html styling:-
 
