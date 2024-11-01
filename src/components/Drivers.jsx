@@ -15,7 +15,6 @@ const Drivers = (props) => {
     const data = await response.json();
     const pageId = Object.keys(data.query.pages)[0];
 
-    
     return data.query.pages[pageId].thumbnail
       ? data.query.pages[pageId].thumbnail.source
       : null;
@@ -113,11 +112,7 @@ const Drivers = (props) => {
         </div>
 
         {!isDriverAdded && (
-          <button
-            type="button"
-            className="col-sm btn btn-primary"
-            onClick={mutation.mutate}
-          >
+          <button type="button" className="col-sm" onClick={mutation.mutate}>
             Add
           </button>
         )}

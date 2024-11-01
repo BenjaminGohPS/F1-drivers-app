@@ -60,7 +60,7 @@ From here, you may click on the 'Profile' to learn more about the driver too. Up
 For the data, credit goes to Ergast API. Information was obtained from here:-
 - [Ergast API](https://documenter.getpostman.com/view/11586746/SztEa7bL#intro)
 
-For designs, I have used bootstrap for the buttons, and the overall html styling:-
+For designs, I have used bootstrap for the overall html styling:-
 
 - [Bootstrap](https://getbootstrap.com/)
 

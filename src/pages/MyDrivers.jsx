@@ -108,7 +108,7 @@ const MyDrivers = () => {
 
                 <button
                   type="button"
-                  className="col-sm btn btn-primary"
+                  className="col-sm"
                   onClick={() => {
                     mutation.mutate(item.id);
                   }}

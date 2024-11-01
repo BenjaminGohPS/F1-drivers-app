@@ -42,14 +42,31 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
+  color: whitesmoke;
   background-color: #0267c1;
   cursor: pointer;
   transition: border-color 0.25s;
+
+  position: relative;
+  border: none;
+  transition: 0.5s ease-in;
+  z-index: 1;
 }
 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+button::before,
+button::after {
+  position: absolute;
+  content: "";
+  z-index: -1;
+}
+
+button:hover {
+  box-shadow: inset -10.5em 0 0 0 #c83e4d, inset 10.5em 0 0 0 #c83e4d;
 }
 
 @media (prefers-color-scheme: light) {
