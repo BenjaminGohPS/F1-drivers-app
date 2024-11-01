@@ -45,7 +45,7 @@ button {
   color: whitesmoke;
   background-color: #0267c1;
   cursor: pointer;
-  transition: border-color 0.25s;
+  /* transition: border-color 0.25s; */
 
   position: relative;
   border: none;
